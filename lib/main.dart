@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:houseoftomorrow/src/service/lang_service.dart';
 import 'package:houseoftomorrow/src/service/theme_service.dart';
 import 'package:houseoftomorrow/src/view/shopping/shopping_view.dart';
 import 'package:houseoftomorrow/util/lang/generated/l10n.dart';
@@ -8,7 +9,10 @@ import 'package:provider/provider.dart';
 void main() {
   runApp(
     MultiProvider(
-      providers: [ChangeNotifierProvider(create: (context) => ThemeService())],
+      providers: [
+        ChangeNotifierProvider(create: (context) => ThemeService()),
+        ChangeNotifierProvider(create: (context) => LangService()),
+      ],
       child: const MyApp(),
     ),
   );
@@ -27,6 +31,8 @@ class MyApp extends StatelessWidget {
         GlobalWidgetsLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate,
       ],
+      supportedLocales: S.delegate.supportedLocales,
+      locale: context.watch<LangService>().locale,
       title: 'House Of Tomorrow',
       theme: context.themeService.themeData,
       debugShowCheckedModeBanner: false,
