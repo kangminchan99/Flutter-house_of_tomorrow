@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:houseoftomorrow/src/service/theme_service.dart';
+import 'package:houseoftomorrow/src/view/shopping/shopping_view.dart';
 import 'package:provider/provider.dart';
 
 void main() {
-  MultiProvider(
-    providers: [ChangeNotifierProvider(create: (context) => ThemeService())],
-    child: const MyApp(),
+  runApp(
+    MultiProvider(
+      providers: [ChangeNotifierProvider(create: (context) => ThemeService())],
+      child: const MyApp(),
+    ),
   );
 }
 
@@ -17,8 +20,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'House Of Tomorrow',
+      theme: context.themeService.themeData,
       debugShowCheckedModeBanner: false,
-      home: Scaffold(body: Center(child: Text('House Of Tomorrow'))),
+      home: const ShoppingView(),
     );
   }
 }
