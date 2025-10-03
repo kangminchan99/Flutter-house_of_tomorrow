@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:houseoftomorrow/src/service/lang_service.dart';
 import 'package:houseoftomorrow/src/service/theme_service.dart';
-import 'package:houseoftomorrow/src/view/shopping/shopping_view.dart';
 import 'package:houseoftomorrow/util/lang/generated/l10n.dart';
+import 'package:houseoftomorrow/util/route_path.dart';
 import 'package:provider/provider.dart';
 
 void main() {
@@ -36,7 +36,8 @@ class MyApp extends StatelessWidget {
       title: 'House Of Tomorrow',
       theme: context.themeService.themeData,
       debugShowCheckedModeBanner: false,
-      home: const ShoppingView(),
+      initialRoute: RoutePath.shopping,
+      onGenerateRoute: RoutePath.onGenerateRoute,
     );
   }
 }
