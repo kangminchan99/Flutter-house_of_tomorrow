@@ -4,6 +4,8 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:houseoftomorrow/src/model/product_model.dart';
 import 'package:houseoftomorrow/src/service/theme_service.dart';
+import 'package:houseoftomorrow/src/view/shopping/widgets/product_card_grid.dart';
+import 'package:houseoftomorrow/src/view/shopping/widgets/product_empty.dart';
 import 'package:houseoftomorrow/theme/components/bottom_sheet/setting_bottom_sheet.dart';
 import 'package:houseoftomorrow/theme/components/button/button.dart';
 import 'package:houseoftomorrow/theme/components/input_field.dart';
@@ -34,6 +36,12 @@ class _ShoppingViewState extends State<ShoppingView> {
     } catch (e, s) {
       log('Failed to load product list', error: e, stackTrace: s);
     }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    searchProductList();
   }
 
   @override
@@ -72,6 +80,12 @@ class _ShoppingViewState extends State<ShoppingView> {
                 Button(onPressed: searchProductList, icon: 'search'),
               ],
             ),
+          ),
+          // ProductCardList
+          Expanded(
+            child: productList.isEmpty
+                ? ProductEmpty()
+                : ProductCardGrid(productList),
           ),
         ],
       ),
