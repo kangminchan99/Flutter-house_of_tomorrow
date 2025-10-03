@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:houseoftomorrow/src/service/theme_service.dart';
+import 'package:houseoftomorrow/theme/components/bottom_sheet/setting_bottom_sheet.dart';
 import 'package:houseoftomorrow/theme/components/button/button.dart';
 import 'package:houseoftomorrow/util/lang/generated/l10n.dart';
 import 'package:provider/provider.dart';
@@ -13,7 +14,18 @@ class ShoppingView extends StatelessWidget {
       appBar: AppBar(
         title: Text(S.current.shopping, style: context.typo.headline2),
         actions: [
-          Button(onPressed: () {}, icon: 'option', type: ButtonType.flat),
+          Button(
+            onPressed: () {
+              showModalBottomSheet(
+                context: context,
+                builder: (context) {
+                  return const SettingBottomSheet();
+                },
+              );
+            },
+            icon: 'option',
+            type: ButtonType.flat,
+          ),
         ],
       ),
       body: Center(

@@ -35,6 +35,11 @@ class ThemeService with ChangeNotifier {
         iconTheme: IconThemeData(color: theme.color.text),
         titleTextStyle: theme.typo.headline2.copyWith(color: theme.color.text),
       ),
+
+      // BottomSheet
+      bottomSheetTheme: const BottomSheetThemeData(
+        backgroundColor: Colors.transparent,
+      ),
     );
   }
 }
