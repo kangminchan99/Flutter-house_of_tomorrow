@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:houseoftomorrow/src/service/theme_service.dart';
 import 'package:houseoftomorrow/theme/components/bottom_sheet/setting_bottom_sheet.dart';
 import 'package:houseoftomorrow/theme/components/button/button.dart';
+import 'package:houseoftomorrow/theme/components/input_field.dart';
 import 'package:houseoftomorrow/util/lang/generated/l10n.dart';
-import 'package:provider/provider.dart';
 
 class ShoppingView extends StatelessWidget {
   const ShoppingView({super.key});
@@ -28,11 +28,24 @@ class ShoppingView extends StatelessWidget {
           ),
         ],
       ),
-      body: Center(
-        child: TextButton(
-          onPressed: context.read<ThemeService>().toggleTheme,
-          child: Text("Toggle Theme", style: context.typo.headline6),
-        ),
+      body: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.symmetric(
+              horizontal: 16.0,
+              vertical: 8.0,
+            ),
+            child: Row(
+              children: [
+                // 검색
+                Expanded(child: InputField(hint: S.current.searchProduct)),
+                const SizedBox(width: 16.0),
+                // 검색 버튼
+                Button(onPressed: () {}, icon: 'search'),
+              ],
+            ),
+          ),
+        ],
       ),
     );
   }
