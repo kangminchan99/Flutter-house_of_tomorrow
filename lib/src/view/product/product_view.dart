@@ -3,9 +3,34 @@ import 'package:houseoftomorrow/src/model/product_model.dart';
 import 'package:houseoftomorrow/theme/components/pop_button.dart';
 import 'package:houseoftomorrow/util/lang/generated/l10n.dart';
 
-class ProductView extends StatelessWidget {
+class ProductView extends StatefulWidget {
   final ProductModel product;
   const ProductView({super.key, required this.product});
+
+  @override
+  State<ProductView> createState() => _ProductViewState();
+}
+
+class _ProductViewState extends State<ProductView> {
+  // 선택한 수량
+  int count = 1;
+
+  // 선택한 색상
+  int colorIndex = 0;
+
+  // 수량 업데이트 이벤트 함수
+  void onCountChanged(int newCount) {
+    setState(() {
+      count = newCount;
+    });
+  }
+
+  // 색상 업데이트 이벤트 함수
+  void onColorIndexChanged(int newColorIndex) {
+    setState(() {
+      colorIndex = newColorIndex;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
