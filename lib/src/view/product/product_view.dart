@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:houseoftomorrow/src/model/product_model.dart';
+import 'package:houseoftomorrow/src/view/product/widgets/product_color_preview.dart';
 import 'package:houseoftomorrow/theme/components/pop_button.dart';
 import 'package:houseoftomorrow/util/lang/generated/l10n.dart';
 
@@ -39,6 +40,12 @@ class _ProductViewState extends State<ProductView> {
         title: Text(S.current.product),
         titleSpacing: 0,
         leading: const PopButton(),
+      ),
+      body: Column(
+        children: [
+          // Product Color Preview
+          ProductColorPreview(colorIndex: colorIndex, product: widget.product),
+        ],
       ),
     );
   }
